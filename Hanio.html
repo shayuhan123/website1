@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seven Layer Tower of Hanoi</title>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="totalMoves"></div>
+    <script>
+        let totalMoves = 0;
+
+        function towerOfHanoi(n, source, auxiliary, destination) {
+            if (n === 1) {
+                totalMoves++;
+                document.getElementById('output').innerHTML += 'Move disk 1 from ' + source + ' to ' + destination + '<br>';
+                return;
+            }
+            towerOfHanoi(n - 1, source, destination, auxiliary);
+            totalMoves++;
+            document.getElementById('output').innerHTML += 'Move disk ' + n + ' from ' + source + ' to ' + destination + '<br>';
+            towerOfHanoi(n - 1, auxiliary, source, destination);
+        }
+        
+        towerOfHanoi(7, 'A', 'B', 'C');
+
+        document.getElementById('totalMoves').innerHTML = 'Total moves: ' + totalMoves;
+    </script>
+</body>
+</html>
